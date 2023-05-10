@@ -1,0 +1,16 @@
+.smooth-image {
+    transition: opacity 1s;
+}
+
+.image-visible {
+    visibility: visible;
+}
+
+.image-hidden {
+    visibility: hidden;
+}
+
+.smooth-no-image {
+    background-image: linear-gradient(90deg, #ccc, #999, #ccc);
+    color: #fff;
+}

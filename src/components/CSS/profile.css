@@ -1,0 +1,23 @@
+.profile_pic:hover .profile_pic_edit {
+    visibility: visible;
+    opacity: 1;
+}
+
+.profile_pic_edit {
+    visibility: hidden;
+    opacity: 0;
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+}
+
+.cover_pic:hover .cover_pic_edit {
+    visibility: visible;
+    opacity: 1;
+}
+
+.cover_pic_edit {
+    visibility: hidden;
+    opacity: 0;
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+}
