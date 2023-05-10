@@ -7,10 +7,6 @@ import {
   Button,
   Dialog,
   DialogContent,
-  InputLabel,
-  FormControl,
-  MenuItem,
-  Select,
   Checkbox,
   Typography,
 } from "@mui/material";

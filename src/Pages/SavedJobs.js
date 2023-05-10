@@ -1,15 +1,10 @@
 import React from "react";
 import Base from "./Base";
 import {
-  Typography,
-  CardMedia,
   Card,
   CardContent,
-  Box,
-  Button,
   Container,
   Grid,
-  Fab,
 } from "@mui/material";
 import axios from "axios";
 import Footer from "../components/utils/Footer/Footer";

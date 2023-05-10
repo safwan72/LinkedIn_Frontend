@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, CardMedia, Card, CardContent } from "@mui/material";
+import { Typography, Card, CardContent } from "@mui/material";
 const BottomSidebar = () => {
   return (
     <Card sx={{ maxWidth: 400, position: "relative", mt: "10px" }}>

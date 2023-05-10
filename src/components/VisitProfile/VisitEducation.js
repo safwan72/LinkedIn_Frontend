@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Card, Box, CardMedia } from "@mui/material";
+import { Typography, Card, Box } from "@mui/material";
 import EducationCard from "../Profile/Education/EducationCard";
 
 const VisitEducation = ({ myeducation }) => {

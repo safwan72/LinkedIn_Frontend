@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Card, Fab, Box, CardMedia } from "@mui/material";
+import { Typography, Card, Fab, Box } from "@mui/material";
 import axios from "axios";
 import baseURL from "../../utils/baseurl";
 

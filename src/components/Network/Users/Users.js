@@ -95,27 +95,27 @@ const Users = ({ item, id, token }) => {
     }
     return fetchData();
   };
-  const handleCancelUser = () => {
-    async function fetchData() {
-      if (item) {
-        const header = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-        const request = await axios.post(
-          `${baseURL}api/connection/cancelfollowrequest/`,
-          {
-            sender: id,
-            receiver: item?.user?.id,
-          },
-          header
-        );
-        setconnected(request?.data);
-      }
-    }
-    return fetchData();
-  };
+  // const handleCancelUser = () => {
+  //   async function fetchData() {
+  //     if (item) {
+  //       const header = {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       };
+  //       const request = await axios.post(
+  //         `${baseURL}api/connection/cancelfollowrequest/`,
+  //         {
+  //           sender: id,
+  //           receiver: item?.user?.id,
+  //         },
+  //         header
+  //       );
+  //       setconnected(request?.data);
+  //     }
+  //   }
+  //   return fetchData();
+  // };
   return (
     <Grid
       item
