@@ -10,7 +10,6 @@ import axios from "axios";
 import baseURL from "../utils/baseurl";
 
 const MySavedJobs = ({ item, id, token }) => {
-  const [myprofile_pic, setmyprofile_pic] = React.useState(null);
   const [ifApplied, setifApplied] = React.useState(false);
   const [company_logo, setcompany_logo] = React.useState(null);
 
@@ -88,7 +87,6 @@ const MySavedJobs = ({ item, id, token }) => {
   React.useEffect(() => {
     async function fetchData() {
       if (item) {
-        setmyprofile_pic(item?.me?.profile_pic);
         setcompany_logo(item?.job?.posted_by?.logo);
       }
     }
