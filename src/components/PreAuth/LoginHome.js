@@ -9,17 +9,9 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import GoogleLogin from "react-google-login";
-import { FcGoogle } from "react-icons/fc";
+
 import LoginEmailForm from "./LoginEmailForm";
-import * as actions from "../../redux/actions";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-import { IoLogoFacebook } from "react-icons/io";
 import { Link } from "react-router-dom";
-import baseURL from "../utils/baseurl";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -32,40 +24,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "5px",
   },
 }));
-const notify = (message) =>
-  toast.dark(message, {
-    progressClassName: "toast_error_class_progress",
-  });
-// const responseGoogle = async (response) => {
 
-//     axios
-//         .post('http://127.0.0.1:8000/auth/convert-token', {
-//             token: response?.accessToken,
-//             backend: 'google-oauth2',
-//             grant_type: 'convert_token',
-//             client_id: 'J7L8O20F7z5vTZgvH3zhYoosngcTxJElOA4PYuV0',
-//             client_secret:
-//                 'xheOnxIvSrYLgtRDVDNrfenat736Aul8ZkbbxxycSgm9PGq6EyoiMbYd7f7DDELZOsFICaCAOMaV48cxK1Wh53S6RGLkZFE6TNhGWqBe1RA9EK5jto1F0iJ37xtS2jub',
-//         })
-//         .then((res) => {
-//             if (res.status === 201) {
-//                 notify(`Hello ${res?.data?.email}!! Login Now`);
-//             }
-//             if (res.status === 200) {
-//                 notify("Succesfully Logged In!!");
-//                 localStorage.setItem("token", res?.data?.access_token)
-//                 localStorage.setItem("expires_in", new Date(res?.data?.expires_in * 105000))
-//                 // dispatch(actions.authsuccess(res?.data?.access_token));
-//             }
-//         });
-
-//     // facebookLogin(response?.accessToken);
-// }
 
 const LoginHome = () => {
   const classes = useStyles();
   const [formstate, setformstate] = React.useState(false);
-  const dispatch = useDispatch();
 
   let showform = null;
   if (formstate) {
@@ -101,80 +64,7 @@ const LoginHome = () => {
               >
                 Continue with email
               </Button>
-              <GoogleLogin
-                clientId="150976157161-nrk87kqpr1i853kh8le4vdum95934mv4.apps.googleusercontent.com"
-                render={(renderProps) => (
-                  <Button
-                    sx={{ minWidth: "100%" }}
-                    onClick={renderProps.onClick}
-                    variant="outlined"
-                    startIcon={<FcGoogle />}
-                  >
-                    Continue with Google
-                  </Button>
-                )}
-                buttonText="Continue with Google"
-                onSuccess={(res) => {
-                  if (res?.accessToken) {
-                    axios
-                      .post(`${baseURL}auth/convert-token`, {
-                        token: res?.accessToken,
-                        backend: "google-oauth2",
-                        grant_type: "convert_token",
-                        client_id: `${process.env.REACT_APP_CLIENT_KEY}`,
-                        client_secret: `${process.env.REACT_APP_CLIENT_SECRET_KEY}`,
-                      })
-                      .then((res) => {
-                        notify("Succesfully Logged In!!");
-                        localStorage.setItem("token", res?.data?.access_token);
-                        localStorage.setItem(
-                          "expires_in",
-                          new Date(res?.data?.expires_in * 105000)
-                        );
-                        dispatch(actions.authsuccess(res?.data?.access_token));
-                      });
-                  }
-                }}
-                onFailure={(err) => {
-                  notify("Something Went Horribly Wrong!! Try Again Please");
-                }}
-                cookiePolicy={"single_host_origin"}
-              />
-              <FacebookLogin
-                appId="671703880810436"
-                fields="name,email,picture"
-                render={(renderProps) => (
-                  <Button
-                    sx={{ minWidth: "100%", my: "10px" }}
-                    onClick={renderProps.onClick}
-                    variant="outlined"
-                    startIcon={<IoLogoFacebook />}
-                  >
-                    Continue with Facebook
-                  </Button>
-                )}
-                callback={(res) => {
-                  if (res?.accessToken) {
-                    axios
-                      .post(`${baseURL}auth/convert-token`, {
-                        token: res?.accessToken,
-                        backend: "facebook",
-                        grant_type: "convert_token",
-                        client_id: `${process.env.REACT_APP_CLIENT_KEY}`,
-                        client_secret: `${process.env.REACT_APP_CLIENT_SECRET_KEY}`,
-                      })
-                      .then((res) => {
-                        notify("Succesfully Logged In!!");
-                        localStorage.setItem("token", res?.data?.access_token);
-                        localStorage.setItem(
-                          "expires_in",
-                          new Date(res?.data?.expires_in * 105000)
-                        );
-                        dispatch(actions.authsuccess(res?.data?.access_token));
-                      });
-                  }
-                }}
-              />
+
             </CardContent>
           </Card>
         </Box>
